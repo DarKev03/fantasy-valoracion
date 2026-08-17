@@ -4,7 +4,7 @@ from app import models
 
 router = APIRouter(prefix="/api/v1", tags=["players"])
 
-@router.get("/players", response_model=models.JugadorResponse)
+@router.get("/players", response_model=list[models.JugadorResponse])
 def get_player(player_name: str = Query(...)):
     player_stats = estadisticas.get_player_stats(player_name)
     if not player_stats:
